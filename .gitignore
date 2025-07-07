@@ -21,3 +21,5 @@ node_modules
 
 # Ignore polyglot benchmark directory
 polyglot-benchmark/
+ruv-marketing-swarm/target
+ruv-marketing-swarm/apps/swarm-studio/node_modules

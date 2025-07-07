@@ -1,0 +1,51 @@
+syntax = "proto3";
+package marketing;
+
+message Campaign {
+  string id = 1;
+  string name = 2;
+}
+
+message Creative {
+  string id = 1;
+  string campaign_id = 2;
+}
+
+message Metric {
+  string id = 1;
+  string creative_id = 2;
+  double value = 3;
+}
+
+message Playbook {
+  string id = 1;
+  string name = 2;
+}
+
+message IdRequest {
+  string id = 1;
+}
+
+message Empty {}
+
+service MarketingService {
+  rpc CreateCampaign(Campaign) returns (Campaign);
+  rpc GetCampaign(IdRequest) returns (Campaign);
+  rpc UpdateCampaign(Campaign) returns (Campaign);
+  rpc DeleteCampaign(IdRequest) returns (Empty);
+
+  rpc CreateCreative(Creative) returns (Creative);
+  rpc GetCreative(IdRequest) returns (Creative);
+  rpc UpdateCreative(Creative) returns (Creative);
+  rpc DeleteCreative(IdRequest) returns (Empty);
+
+  rpc CreateMetric(Metric) returns (Metric);
+  rpc GetMetric(IdRequest) returns (Metric);
+  rpc UpdateMetric(Metric) returns (Metric);
+  rpc DeleteMetric(IdRequest) returns (Empty);
+
+  rpc CreatePlaybook(Playbook) returns (Playbook);
+  rpc GetPlaybook(IdRequest) returns (Playbook);
+  rpc UpdatePlaybook(Playbook) returns (Playbook);
+  rpc DeletePlaybook(IdRequest) returns (Empty);
+}

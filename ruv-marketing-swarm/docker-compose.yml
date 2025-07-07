@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5432:5432"
+  vectordb:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+  swarm-daemon:
+    build: ./crates/marketing_swarm
+    command: cargo run --release -- serve
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+  studio:
+    build: ./apps/swarm-studio
+    command: npm run tauri
+    ports:
+      - "4000:4000"

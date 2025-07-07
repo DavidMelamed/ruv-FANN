@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "crates/fann_core",
+    "crates/marketing_divergent",
+    "crates/marketing_swarm"
+]
+
+resolver = "2"

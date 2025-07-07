@@ -1,0 +1,26 @@
+name: marketing-swarm-ci
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Build
+        run: cargo build --workspace
+      - name: Unit Test
+        run: cargo test --workspace
+      - name: Wasm Test
+        run: echo "TODO: wasm test"
+      - name: Cargo Audit
+        run: cargo audit || true
+      - name: Playwright UI Test
+        run: echo "TODO: playwright"

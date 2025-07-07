@@ -1,0 +1,30 @@
+syntax = "proto3";
+package marketing;
+
+message Campaign {
+  string id = 1;
+  string name = 2;
+}
+
+message Creative {
+  string id = 1;
+  string campaign_id = 2;
+}
+
+message Metric {
+  string id = 1;
+  string creative_id = 2;
+  double value = 3;
+}
+
+message Playbook {
+  string id = 1;
+  string name = 2;
+}
+
+service MarketingService {
+  rpc CreateCampaign(Campaign) returns (Campaign);
+  rpc GetCampaign(Campaign) returns (Campaign);
+  rpc UpdateCampaign(Campaign) returns (Campaign);
+  rpc DeleteCampaign(Campaign) returns (Campaign);
+}
